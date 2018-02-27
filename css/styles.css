@@ -68,8 +68,66 @@ nav a{
 
 /* BODY */
 
+body{
+  padding-bottom: 200px;
+}
+
 .hero-img img.hero{
   position: relative;
   top: -150px;
   width: 100%;
+}
+
+.difference img{
+  width: 100%;
+  position: absolute;
+}
+
+.baseball-option{
+
+}
+
+.ep{
+  z-index: -1;
+  position: absolute;
+}
+
+/* .sports-options-title-overlay {
+  text-align: center;
+  background-color: rgba(255,255,255,.5);
+
+}
+
+.sports-options-title-overlay span{
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px 0;
+} */
+
+.alt-sports{
+  padding-top: 35px;
+}
+
+.creations {
+  padding-top: 90px;
+  padding-bottom: 120px;
+}
+
+.creations h1, .creations h5{
+  text-align: center;
+}
+
+.creations h5{
+  margin-top: -7px;
+  color: #737373;
+}
+
+.difference .container{
+  position: relative;
+}
+
+.difference .container h2{
+  color: white;
 }
