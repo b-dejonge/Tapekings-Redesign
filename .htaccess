@@ -1,0 +1,3 @@
+RewriteEngine Off
+RewriteBase /tapekings-redesign/
+RewriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]

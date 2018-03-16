@@ -90,11 +90,16 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="banner difference">
-        <img src="css/img/the-difference.jpg" alt="">
+    <div class="row difference">
+      <div class="col-sm-12 banner">
         <div class="container">
-          <h2>The Difference</h2>
+          <div class="col-lg-5 col-sm-12">
+            <div class="difference-content">
+              <h2>The Difference</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <button type="button" class="btn btn-danger flat" name="button">Shop Now</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@
 
               while ($row = mysqli_fetch_assoc($result)) {
                 echo
-                "<a href='#' class='dropdown-item'>$row[category]</a>";
+                "<a href='$row[category]' class='dropdown-item'>$row[category]</a>";
               }
             ?>
           </div>
