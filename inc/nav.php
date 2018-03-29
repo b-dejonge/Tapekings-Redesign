@@ -9,9 +9,9 @@
         <li class="nav-item">
           <a href="#" class="nav-link">Home</a>
         </li>
-        <li class='nav-item dropdown'>
-          <a href="#" class="nav-link dropdown-toggle" id="storeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Store</a>
-          <div class="dropdown-menu" aria-labelledby="storeDropdown">
+        <li class='nav-item'>
+          <a href="store" class="nav-link" id="storeDropdown">Store</a>
+          <!-- <div class="dropdown-menu" aria-labelledby="storeDropdown">
             <?php
               $sql = "SELECT * FROM categories WHERE parent=0";
               $result = mysqli_query($conn, $sql);
@@ -21,17 +21,17 @@
                 "<a href='$row[category]' class='dropdown-item'>$row[category]</a>";
               }
             ?>
-          </div>
+          </div> -->
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Designs</a>
+          <a href="designs" class="nav-link">Designs</a>
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="moreDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
           <div class="dropdown-menu" aria-labelledby="moreDropdown">
-            <a href="#" class="dropdown-item">About us</a>
-            <a href="#" class="dropdown-item">Contact us</a>
-            <a href="#" class="dropdown-item">FAQ</a>
+            <a href="about-us" class="dropdown-item">About us</a>
+            <a href="contact-us" class="dropdown-item">Contact us</a>
+            <a href="faq" class="dropdown-item">FAQ</a>
           </div>
         </li>
       </ul>
@@ -39,12 +39,12 @@
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="accountDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
           <div class="dropdown-menu" aria-labelledby="accountDropdown">
-            <a href="#" class="dropdown-item">Sign in/Regesiter</a>
-            <a href="#" class="dropdown-item">View Account</a>
+            <a href="signin" class="dropdown-item">Sign in/Regesiter</a>
+            <a href="account" class="dropdown-item">View Account</a>
           </div>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Cart (1)</a>
+          <a href="cart" class="nav-link">Cart (1)</a>
         </li>
       </ul>
     </div>
