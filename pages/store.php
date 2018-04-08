@@ -23,6 +23,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
               echo"
                 <div class='col-md-4 product'>
+                <form id='add-to-cart' action='inc/cart.php' method='post'>
                   <div class='product-thumb'>
                     <div class='image'>
                       <a href='store/$row[category]/$row[slug]'>
@@ -33,9 +34,13 @@
                       <h4>$row[title]</h4>
                       <p>$row[description]</p>
                       <p class='price'>$$row[price]</p>
+                      <input class='d-none' name='price' value='$row[price]'>
+                      <input class='d-none' name='qty' value='1'>
+                      <input class='id d-none' name='id' value='$row[id]'></input>
                     </div>
-                    <button class='btn'>Add to Cart</button>
+                    <button type='button' onclick='cart.add($row[id],1)' class='btn' name='add-to-cart'>Add to Cart</button>
                   </div>
+                  </form>
                 </div>
               ";
             }

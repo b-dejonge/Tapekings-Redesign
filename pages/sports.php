@@ -179,6 +179,27 @@
         <iframe src="https://www.youtube.com/embed/aCdgM1UE0O0?rel=0&amp;showinfo=0"   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
     </div>
+    <div class="email">
+    		<div class="container">
+
+    			<div class="row">
+    				<div class="col-sm-12 text-center">
+    					<h2>SlGN UP</h2>
+
+    						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+
+    						<form action="" method="post">
+    							<div class="input-prepend"><span class="add-on"><i class="icon-envelope"></i></span>
+    								<input type="text" id="email-adresi" name="" placeholder="Enter your email adress..." style="border: 2px solid #222">
+    							</div>
+    							<br />
+    							<input type="submit" value="Sign Up!" class="btn btn-default" style="padding: 12px 58px; border: none; text-align: center; background: #cc0000; cursor: pointer; color: #FFF; margin: 10px 0px; font-weight: 600; font-size: 16px; cursor: pointer;"/>
+    					  </form>
+    				</div>
+    			</div>
+
+    		</div>
+    	</div>
 
 
 
