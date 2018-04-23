@@ -18,3 +18,17 @@ var cart = {
 		});
 	}
 }
+
+$('#view-all-btn').click(function functionName(e) {
+	e.preventDefault();
+	document.getElementById("view-all").style.display = "flex";
+	document.getElementById("view-all-btn").style.display = "none";
+	document.getElementById("view-less-btn").style.display = "block";
+});
+
+$('#view-less-btn').click(function functionName(e) {
+	e.preventDefault();
+	document.getElementById("view-all").style.display = "none";
+	document.getElementById("view-all-btn").style.display = "block";
+	document.getElementById("view-less-btn").style.display = "none";
+});

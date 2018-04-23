@@ -1,30 +1,34 @@
 <?php
 include 'inc/head.php';
-include 'inc/nav.php';
 // print_r($_SESSION['cart']);
+include 'inc/nav.php';
+// echo "<br>" . $_SESSION['itemExists'];
 ?>
 
 <div class="container cart">
+  <?php if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])){ ?>
   <div class="row">
     <div class="col-lg-9 your-cart-overview">
       <div class="row your-cart">
         <div class="col-sm-12">
-          <h4>YOUR CART (<?php echo count($_SESSION['cart']); ?>)</h4>
+          <h4>YOUR CART (<?php $total_qty=0; foreach ($_SESSION['cart'] as $cartitems) {$total_qty += $cartitems['qty']; } echo $total_qty; ?>)</h4>
+          <!-- <?php print_r($_SESSION['cart']); ?> -->
         </div>
       </div>
       <div class="row ">
         <div class="col-sm-12">
-          <?php $i=0; foreach ($_SESSION['cart'] as $cartitems) { ?>
+          <?php $i=0; foreach ($_SESSION['cart'] as $cartitems) { if (isset($cartitems['id'])) { ?>
           <div class="row productRow">
             <div class="col-md-3 productImage">
-              <img class="img-fluid " src="<?php echo $cartitems['image']; ?>" alt="prewiew">
+              <img class="img-fluid" src="<?php echo $cartitems['image']; ?>" alt="preview">
             </div>
-            <div class="col-md-6 prodcutDetails">
-              <a href="<?php echo $cartitems['slug']; ?>">
+            <div class="col-md-6 productDetails">
+              <a href="<?php if (strpos($cartitems['slug'], 'tape')) {
+                echo "store/tape/";} echo $cartitems['slug']; ?>">
                 <p class="product-name"><?php echo $cartitems['name']; ?></p>
               </a>
               <p>
-                <span class="cartItemOption">Prodcut #:
+                <span class="cartItemOption">Product #:
                   <span class="text-muted"><?php echo $cartitems['id']; ?></span>
                 </span>
                 <span class="cartItemOption">Qty:
@@ -39,7 +43,44 @@ include 'inc/nav.php';
 ?></span>
             </div>
           </div>
-          <?php $i++;} ?>
+          <?php } else { ?>
+            <div class="row productRow">
+              <div class="col-md-3 productImage">
+                <img class="img-fluid design" src="<?php echo $cartitems['image']; ?>" alt="preview">
+              </div>
+              <div class="col-md-6 productDetails">
+                <a href="<?php echo "store/send-us-your-bat/".$cartitems['grip-type']; ?>">
+                  <p class="product-name">Send Us Your Bat</p>
+                </a>
+                <p>
+                  <span class="cartItemOption">Grip Type:
+                    <span class="text-muted"><?php echo $cartitems['grip-type']; ?></span>
+                  </span>
+                  <span class="cartItemOption">Design:
+                    <span class="text-muted"><?php echo $cartitems['design-type']; ?></span>
+                  </span>
+                  <span class="cartItemOption">Color 1:
+                    <span class="text-muted"><?php echo $cartitems['color1']; ?></span>
+                  </span>
+                  <span class="cartItemOption">Color 2:
+                    <span class="text-muted"><?php echo $cartitems['color2']; ?></span>
+                  </span>
+                  <span class="cartItemOption">Color 3:
+                    <span class="text-muted"><?php echo $cartitems['color3']; ?></span>
+                  </span>
+                  <span class="cartItemOption">Qty:
+                    <span class="text-muted"><?php echo $cartitems['qty'] . " @ $" . $cartitems['price']; ?>
+                  </span>
+                </p>
+                <button type="button" name="button" class="btn btn-cart" onclick="cart.remove(<?php echo $i; ?>)">REMOVE</button> <button type="button" name="button" class="btn btn-cart">EDIT</button>
+              </div>
+              <div class="col-md-3 productTotal">
+                <span class="product-total">$<?php $subtotal = $cartitems['price'] * $cartitems['qty'];
+                echo number_format((float)$subtotal, 2, '.', '');
+  ?></span>
+              </div>
+            </div>
+          <?php }$i++;} ?>
         </div>
       </div>
     </div>
@@ -58,7 +99,7 @@ include 'inc/nav.php';
             <h5 class="summary-subtotal">$<?php
             $summary_subtotal = 0;
             foreach ($_SESSION['cart'] as $cartitems) {
-              $summary_subtotal += $cartitems['price'];
+              $summary_subtotal += $cartitems['price']*$cartitems['qty'];
             }
             echo number_format((float)$summary_subtotal, 2, '.', ''); ?></h5>
           </div>
@@ -69,7 +110,7 @@ include 'inc/nav.php';
           </div>
           <div class="summaryRow taxes">
             <h5>Tax</h5>
-            <h5 class="tax-total">$<?php $tax = $subtotal * 0.06;
+            <h5 class="tax-total">$<?php $tax = $summary_subtotal * 0.07;
             echo number_format((float)$tax, 2, '.', ''); ?></h5>
           </div>
           <div class="summaryRow total">
@@ -78,33 +119,22 @@ include 'inc/nav.php';
             echo number_format((float)$total, 2, '.', ''); ?></h5>
           </div>
           <div class="summaryRowEnd checkout">
-            <button type="button" name="button">CHECKOUT</button>
+            <a href="checkout"><button type="button" name="button">CHECKOUT</button></a>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <?php }else{ ?>
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Your cart is empty</h4>
+        <a href="store"><-Continue Shopping</a>
+        <br><br><br><br><br>
+      </div>
+    </div>
+  <?php } ?>
 </div>
-
-
-<!-- <table>
-  <tbody>
-    <tr>
-      <th>Prodcut Name</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Description</th>
-    </tr>
-    <?php
-
-      echo "<tr><td>$cartitems[name]</td>";
-      echo "<td>$cartitems[price]</td>";
-      echo "<td>$cartitems[qty]</td>";
-      echo "<td>$cartitems[desc]</td></tr>";
-
-    ?>
-  </tbody>
-</table> -->
 
 
 <?php include 'inc/footer.php';?>

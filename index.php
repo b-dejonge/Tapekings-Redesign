@@ -3,97 +3,55 @@
 session_start();
 
 $url = $_GET['url'];
-$slug = preg_replace("/-+/", " ", $url);
-$title = ucwords ($slug);
+$_SESSION['url'] = $url;
+
+if (isset($_GET['category'])) {
+  $category = $_GET['category'];
+  if (isset($_GET['product'])) {
+    $product = $_GET['product'];
+    $_SESSION['product'] = $product;
+    if ($category=="tape") {
+      $slug = preg_replace("/-+/", " ", $product);
+      $title = ucwords ($slug);
+      $_SESSION['title'] = $title;
+      include 'pages/product.php';
+      die();
+    } else if ($category=="send-us-your-bat") {
+      $title = ucwords ($product);
+      $_SESSION['title'] = $title;
+      include 'pages/productService.php';
+      die();
+    }
+  }
+}
+
+if (isset($_GET['orderID'])) {
+  $orderID = $_GET['orderID'];
+  $_SESSION['orderID'] = $orderID;
+  $_SESSION['title'] = "Order Overview";
+  include 'pages/ordersFull.php';
+  die();
+}
+if (isset($_GET['dashboardPath'])){
+  $dashboardPath = $_GET['dashboardPath'];
+  $title = ucwords ($dashboardPath);
+  $_SESSION['title'] = $title;
+  include 'pages/' . $dashboardPath . '.php';
+  die();
+}
 
 if ($url=="index.php") {
   $_SESSION['title'] = "Home";
   include 'pages/landing.php';
+  die();
 }
 
-else {
+if (file_exists("pages/" . $url . ".php")) {
+  $slug = preg_replace("/-+/", " ", $url);
+  $title = ucwords ($slug);
   $_SESSION['title'] = $title;
   include 'pages/' . $url . '.php';
 }
 
-// else if ($url=="sports") {
-//   $_SESSION['title'] = "Sports";
-//   include 'pages/sports.php';
-// }
-//
-// else if ($url=="outdoors") {
-//   $_SESSION['title'] = "outdoors";
-//   include 'pages/outdoors.php';
-// }
-//
-// else if ($url=="store") {
-//   $_SESSION['title'] = "Store";
-//   include 'pages/store.php';
-// }
-//
-// else if ($url=="store-outdoors") {
-//   $_SESSION['title'] = "Store Outdoors";
-//   include 'pages/store-outdoors.php';
-// }
-//
-// else if ($url=="store-sports") {
-//   $_SESSION['title'] = "Store Sports";
-//   include 'pages/store-sports.php';
-// }
-//
-// else if ($url=="red") {
-//   $_SESSION['title'] = "Red Tape";
-//   include 'pages/red.php';
-// }
-//
-// else if ($url=="sports-designs") {
-//   $_SESSION['title'] = "Sports Designs";
-//   include 'pages/sports-designs.php';
-// }
-//
-// else if ($url=="outdoors-designs") {
-//   $_SESSION['title'] = "Outdoors Designs";
-//   include 'pages/outdoors-designs.php';
-// }
-//
-// else if ($url=="about-us") {
-//   $_SESSION['title'] = "About Us";
-//   include 'pages/about-us.php';
-// }
-//
-// else if ($url=="contact-us") {
-//   $_SESSION['title'] = "Contact Us";
-//   include 'pages/contact-us.php';
-// }
-//
-// else if ($url=="faq") {
-//   $_SESSION['title'] = "FAQ";
-//   include 'pages/faq.php';
-// }
-//
-// else if ($url=="signin") {
-//   $_SESSION['title'] = "Sign In";
-//   include 'pages/signin.php';
-// }
-//
-// else if ($url=="account") {
-//   $_SESSION['title'] = "Account";
-//   include 'pages/account.php';
-// }
-//
-// else if ($url=="cart") {
-//   $_SESSION['title'] = "Cart";
-//   include 'pages/cart.php';
-// }
-//
-// else if ($url=="checkout") {
-//   $_SESSION['title'] = "Checkout";
-//   include 'pages/checkout.php';
-// }
-//
-// else {
-//   $_SESSION['title'] = "Error";
-//   include 'pages/404.php';
-// }
 
 ?>

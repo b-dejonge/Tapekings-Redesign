@@ -1,10 +1,11 @@
+</body>
 	<div class="footer-top">
 	   <div class="container">
 	      <div class="social-icons">
-				<a href="https://www.instagram.com/tapekings"><i class="icon fa fa-instagram"></i></a>
-				<a href="https://twitter.com/tapekings"><i class="icon fa fa-twitter"></i></a>
-				<a href="https://www.facebook.com/TapeKings/"><i class="icon fa fa-facebook"></i></a>
-				<a href="https://www.youtube.com/channel/UCDKiZPt3THJd-njkv4TNi0g"><i class="icon fa fa-youtube-play"></i></a>
+				<a href="https://www.instagram.com/tapekings"><i class="fab fa-instagram"></i></a>
+				<a href="https://twitter.com/tapekings"><i class="fab fa-twitter"></i></a>
+				<a href="https://www.facebook.com/TapeKings/"><i class="fab fa-facebook-f"></i></a>
+				<a href="https://www.youtube.com/channel/UCDKiZPt3THJd-njkv4TNi0g"><i class="fab fa-youtube"></i></a>
 		   </div>
 	   </div>
 	</div>
@@ -66,7 +67,6 @@
     $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
   });
   </script>
-  <script src=" js/common.js"></script>
-
+  <script src="js/common.js"></script>
 </body>
 </html>

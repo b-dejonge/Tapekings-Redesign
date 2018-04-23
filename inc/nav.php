@@ -37,11 +37,20 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a href="cart" class="nav-link"><i class="fa fa-shopping-cart" style="font-size:20px;"></i><span class="cartQty"><?php echo count($_SESSION['cart']); ?></span></a>
+          <a href="cart" class="nav-link"><i class="fas fa-shopping-cart" style="font-size:20px;"></i>
+            <span class="cartQty">
+            <?php if(isset($_SESSION['cart']) && is_array($_SESSION['cart'])){
+              $total_qty=0; foreach ($_SESSION['cart'] as $cartitems) {$total_qty += $cartitems['qty']; } echo $total_qty;
+            }else{
+              echo "0";
+            } ?></span></a>
         </li>
-        <?php if(isset($_SESSION['id'])){ ?>
+        <?php if(isset($_SESSION['userID'])){ ?>
         <li class="nav-item">
           <a href="account" class="nav-link">My Account</a>
+        </li>
+        <li class="nav-item">
+          <a href="logout" class="nav-link">Log Out</a>
         </li>
         <?php }else{ ?>
         <li class="nav-item">
@@ -63,6 +72,7 @@
                     <input type="password" name="password" value="">
                   </div>
                   <div class="login-button">
+                    <input type="hidden" name="url" value="<?php echo $_SESSION['url'] ?>">
                     <button type="submit" name="loginButton">LOG IN</button>
                   </div>
                 </div>

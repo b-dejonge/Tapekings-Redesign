@@ -16,21 +16,21 @@
           <h1>SPORTS WE'VE DONE</h1>
           <h5>We can tape pretty much anything!</h5>
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-md-4 col-sm-12">
               <div class="baseball-option">
                 <a href="#">
                   <img src="css/img/baseball-option.png" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-md-4 col-sm-12">
               <div class="softball-option">
                 <a href="#">
                   <img src="css/img/softball-option.png" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-md-4 col-sm-12">
               <div class="endless-possibilities">
                 <a href="#">
                   <img src="css/img/endless-possibilities.png" class="img-fluid ep" alt="">
@@ -39,26 +39,26 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-8">
+        <div class="col-md-8 col-sm-12">
           <div class="row alt-sports">
-            <div class="col-sm-4">
+            <div class="col-md-4 col-sm-12">
               <div class="hockey-option">
                 <a href="#">
-                  <img src="css/img/hockey-option.png" class="img-fluid" alt="">
+                  <img src="css/img/hockey-option.png" class="img-fluid alt-sports-image" alt="">
                 </a>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-md-4 col-sm-12">
               <div class="tennis-option">
                 <a href="#">
-                  <img src="css/img/tennis-option.png" class="img-fluid" alt="">
+                  <img src="css/img/tennis-option.png" class="img-fluid alt-sports-image" alt="">
                 </a>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-md-4 col-sm-12">
               <div class="lacrosse-option">
                 <a href="#">
-                  <img src="css/img/lacrosse-option.png" class="img-fluid" alt="">
+                  <img src="css/img/lacrosse-option.png" class="img-fluid alt-sports-image" alt="">
                 </a>
               </div>
             </div>

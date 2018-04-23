@@ -1,4 +1,9 @@
 RewriteEngine On
 RewriteBase /tapekings-redesign/
 RewriteRule ^(css|images|js|fonts) - [L]
+RewriteRule ^store/([a-z_-]+)/([a-z_-]+) index.php?category=$1&product=$2
+RewriteRule ^account/([a-z_-]+) index.php?dashboardPath=$1
+RewriteRule ^orders/([0-9]+) index.php?orderID=$1
 RewriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]
+
+ErrorDocument 404 404.php

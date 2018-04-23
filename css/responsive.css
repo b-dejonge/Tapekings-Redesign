@@ -1,0 +1,32 @@
+@media screen and (max-width: 768px) {
+  .hero-img img.hero{
+    margin-top: 0;
+  }
+  .ep{
+    position: relative;
+  }
+  .main-sports .col-sm-12 .row .col-sm-12{
+    padding-bottom: 10px;
+  }
+  .difference{
+    background-position: 56% 0 !important;
+  }
+  #email-adresi{
+    width: 92% !important;
+  }
+  .logo img{
+    margin-bottom: 30px;
+  }
+  .footer li:last-child{
+    margin-bottom: 40px;
+  }
+  .store-header{
+    background-position: 50% 57%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .alt-sports{
+    padding-top: 35px;
+  }
+}

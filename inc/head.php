@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="../tapekings-redesign/favicon.ico">
     <link rel="stylesheet" href="lib/normalize/normalize.css">
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap/bootstrap-grid.css">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:500,900|Cabin:400,500,600" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
 
   </head>
