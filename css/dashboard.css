@@ -27,7 +27,7 @@ body {
   position: sticky;
   top: 48px; /* Height of navbar */
   height: calc(100vh - 48px);
-  padding-top: .5rem;
+  padding-top: 1.5rem;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
@@ -42,8 +42,17 @@ body {
   color: #999;
 }
 
-.sidebar .nav-link.active {
-  color: #007bff;
+.sidebar .nav-link.active, a {
+  color: #cc0000;
+}
+
+table a:hover{
+  color: #cc0000;
+  text-decoration: underline;
+}
+
+.card.order-details table, .card.customer-details table{
+  margin-left: 20px;
 }
 
 .sidebar .nav-link:hover .feather,
@@ -118,4 +127,18 @@ body {
 .orderInfo{
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+table.table thead {
+    background: #565656 none repeat scroll 0 0;
+    color: #fff;
+}
+
+p{
+  line-height: 2px;
+}
+
+.order-bat-info{
+  margin-left: 10px;
+  margin-top: 10px;
 }

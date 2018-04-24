@@ -21,17 +21,20 @@ session_start();
   $billingState = $_POST['billingState'];
   $billingZip = $_POST['billingZip'];
 
-  $same_address = $_POST['same-address'];
+  if (isset($_POST['same-address'])) {
+    $same_address = $_POST['same-address'];
+    if ($same_address == "on") {
+      $shippingFirstName = $billingFirstName;
+      $shippingLastName = $billingLastName;
+      $shippingAddress = $billingAddress;
+      $shippingAddress2 = $billingAddress2;
+      $shippingCity = $billingCity;
+      $shippingState = $billingState;
+      $shippingZip = $billingZip;
+    }
+  }
   // Shipping
-  if ($same_address == "on") {
-    $shippingFirstName = $billingFirstName;
-    $shippingLastName = $billingLastName;
-    $shippingAddress = $billingAddress;
-    $shippingAddress2 = $billingAddress2;
-    $shippingCity = $billingCity;
-    $shippingState = $billingState;
-    $shippingZip = $billingZip;
-  } else {
+    else {
     $shippingFirstName = $_POST['shippingFirstName'];
     $shippingLastName = $_POST['shippingLastName'];
     $shippingAddress = $_POST['shippingAddress'];
@@ -131,4 +134,6 @@ session_start();
 //   mysqli_query($conn, $sql);
 // }
 
+
+header("Location: ../account")
 ?>

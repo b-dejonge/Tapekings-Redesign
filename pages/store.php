@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-lg-6 text-center prices-headline">
           <h2 class="heading">Send Us Your Bat</h2>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis  dis parturient montes, nascetur ridiculus </p><br>
+          <p>Send your bat in to the professinals where we put on your desired colors and design. Pick from our tiered pricing where you can add great features like the Hydro Grip and also gain FREE shipping.</p><br>
         </div>
       </div>
       <div class="prices-box">

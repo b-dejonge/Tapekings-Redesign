@@ -22,25 +22,25 @@
                     <ul>
                       <li><a href="">Home</a></li>
                       <li><a href="store">Store</a></li>
-					            <li><a href="designs">Designs</a></li>
+					            <li><a href="account">Account</a></li>
 					            <li><a href="about-us">About Us</a></li>
 					            <li><a href="contact-us">Contact Us</a></li>
                     </ul>
                 </div>
 				        <div class="col-lg-3 col-xs-12">
-                  <h3>CATEGORIES</h3>
+                  <h3>SEND US YOUR BAT</h3>
                     <ul>
-                      <li><a href="tape">Tape</a></li>
-                      <li><a href="outdoors">Outdoors</a></li>
-						          <li><a href="sports">Sports</a></li>
-						          <li><a href="account">Account</a></li>
+                      <li><a href="store/send-us-your-bat/basic">Basic</a></li>
+                      <li><a href="store/send-us-your-bat/standard">Standard</a></li>
+						          <li><a href="store/send-us-your-bat/hydro">Hydro</a></li>
+						          <li><a href="store/send-us-your-bat/custom">Custom</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-xs-12">
                     <h3>CONTACT</h3>
                     <ul>
                       <li><a href="#">Address:<br/>1600 E Washington Blvd<br/>Fort Wayne, IN 46803</a></li>
-                      <li><a href="#">Phone:<br/>(999) 999-9999</a></li>
+                      <li><a href="#">Phone:<br/>(810) 288-0611</a></li>
                       <li><a href="#">E-Mail:<br/>tapekings@gmail.com</a></li>
                     </ul>
                 </div>

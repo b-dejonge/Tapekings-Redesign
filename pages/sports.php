@@ -18,21 +18,21 @@
           <div class="row">
             <div class="col-md-4 col-sm-12">
               <div class="baseball-option">
-                <a href="#">
+                <a href="store">
                   <img src="css/img/baseball-option.png" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
             <div class="col-md-4 col-sm-12">
               <div class="softball-option">
-                <a href="#">
+                <a href="store">
                   <img src="css/img/softball-option.png" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
             <div class="col-md-4 col-sm-12">
               <div class="endless-possibilities">
-                <a href="#">
+                <a href="store">
                   <img src="css/img/endless-possibilities.png" class="img-fluid ep" alt="">
                 </a>
               </div>
@@ -43,21 +43,21 @@
           <div class="row alt-sports">
             <div class="col-md-4 col-sm-12">
               <div class="hockey-option">
-                <a href="#">
+                <a href="store">
                   <img src="css/img/hockey-option.png" class="img-fluid alt-sports-image" alt="">
                 </a>
               </div>
             </div>
             <div class="col-md-4 col-sm-12">
               <div class="tennis-option">
-                <a href="#">
+                <a href="store">
                   <img src="css/img/tennis-option.png" class="img-fluid alt-sports-image" alt="">
                 </a>
               </div>
             </div>
             <div class="col-md-4 col-sm-12">
               <div class="lacrosse-option">
-                <a href="#">
+                <a href="store">
                   <img src="css/img/lacrosse-option.png" class="img-fluid alt-sports-image" alt="">
                 </a>
               </div>
@@ -81,8 +81,8 @@
           <div class="col-lg-5 col-sm-12">
             <div class="difference-content">
               <h2>The Difference</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <button type="button" class="btn btn-default" name="button">Shop Now</button>
+              <p>We pride ourselves in giving you the best experience so that you can get back on the field with an amazing new grip. With so many possibilities for design you will have a one of a kind design that with our Hydro Grip will last longer than the bat itself.</p>
+              <a href="store"><button type="button" class="btn btn-default" name="button">Shop Now</button></a>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@
         <div class="row">
           <div class="col-lg-6 text-center prices-headline">
             <h2><span class="ion-minus"></span>Prices<span class="ion-minus"></span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis  dis parturient montes, nascetur ridiculus </p><br>
+            <p>Send your bat in to the professinals where we put on your desired colors and design. Pick from our tiered pricing where you can add great features like the Hydro Grip and also gain FREE shipping.</p><br>
           </div>
         </div>
 		    <div class="prices-box">
@@ -106,7 +106,7 @@
                 <div class="price">
                   <span>$10</span>
                 </div>
-                <a class="btn btn-default" href="#">Buy Now</a>
+                <a class="btn btn-default" href="store/send-us-your-bat/basic">Buy Now</a>
               </div>
               <div class="bottom-content text-center">
                 <ul class="features list-unstyled">
@@ -124,7 +124,7 @@
                 <div class="price">
                   <span>$20</span>
                 </div>
-                <a class="btn btn-default" href="#">Buy Now</a>
+                <a class="btn btn-default" href="store/send-us-your-bat/standard">Buy Now</a>
               </div>
               <div class="bottom-content text-center">
                 <ul class="features list-unstyled">
@@ -142,7 +142,7 @@
                 <div class="price">
                   <span>$30</span>
                 </div>
-                <a class="btn btn-default" href="#">Buy Now</a>
+                <a class="btn btn-default" href="store/send-us-your-bat/hydro">Buy Now</a>
               </div>
               <div class="bottom-content text-center">
                 <ul class="features list-unstyled">
@@ -160,7 +160,7 @@
                 <div class="price">
                   <span>$40</span>
                 </div>
-                <a class="btn btn-default" href="#">Buy Now</a>
+                <a class="btn btn-default" href="store/send-us-your-bat/custom">Buy Now</a>
               </div>
               <div class="bottom-content text-center">
                 <ul class="features list-unstyled">
@@ -186,7 +186,7 @@
     				<div class="col-sm-12 text-center">
     					<h2>SlGN UP</h2>
 
-    						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+    						<p>Stay up to date with the newest designs, upcoming giveaways, and special promotions. </p>
 
     						<form action="" method="post">
     							<div class="input-prepend"><span class="add-on"><i class="icon-envelope"></i></span>

@@ -105,7 +105,14 @@ include 'inc/nav.php';
           </div>
           <div class="summaryRow shipping">
             <h5>Shipping</h5>
-            <h5 class="shipping-total">$<?php $shipping = 8;
+            <h5 class="shipping-total">$<?php if (isset($cartitems['grip-type'])){
+              if($cartitems['grip-type'] == "Hydro" || $cartitems['grip-type'] == "Custom"){
+              $shipping = 0;
+            } else {
+              $shipping = 5;
+            }} else{
+              $shipping = 5;
+            }
             echo number_format((float)$shipping, 2, '.', ''); ?></h5>
           </div>
           <div class="summaryRow taxes">

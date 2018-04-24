@@ -1,3 +1,7 @@
+<?php if(!isset($_SESSION['userID'])){
+  header("Location: ./register");
+} ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -22,10 +26,11 @@
 
   </head>
   <?php include 'app/database.php' ?>
+
 <body class="dashboard">
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="sports"><img src="./css/img/logo-top.png" alt="Logo" style="height:40px;"/></a>
+      <form action="inc/search.php" method="post" style="max-width: 1485px;width: 100%;"><input class="form-control form-control-dark w-100" type="text" name="search" placeholder="Search" aria-label="Search"></form>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           <a class="nav-link" href="logout">Sign out</a>
@@ -50,8 +55,9 @@
                   Orders
                 </a>
               </li>
+              <?php if ($_SESSION['userID']==0){ ?>
               <li class="nav-item">
-                <a class="nav-link" href="products">
+                <a class="nav-link" href="productsDashboard">
                   <span data-feather="shopping-cart"></span>
                   Products
                 </a>
@@ -62,58 +68,14 @@
                   Customers
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2"></span>
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="layers"></span>
-                  Integrations
-                </a>
-              </li> -->
+              <?php } ?>
             </ul>
-
-            <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Saved reports</span>
-              <a class="d-flex align-items-center text-muted" href="#">
-                <span data-feather="plus-circle"></span>
-              </a>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Current month
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Last quarter
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Social engagement
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Year-end sale
-                </a>
-              </li>
-            </ul> -->
-          </div>
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard</h1>
+            <?php if(isset($_SESSION['search'])){print_r($_SESSION['search']);} ?>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <button class="btn btn-sm btn-outline-secondary">Share</button>
@@ -125,9 +87,9 @@
               </button>
             </div>
           </div>
-
+          <?php if ($_SESSION['userID']==0){ ?>
           <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
-
+          <?php } ?>
           <h2>Recent Orders</h2>
           <div class="table-responsive">
             <table class="table table-striped table-sm">
@@ -141,17 +103,13 @@
                 </tr>
               </thead>
               <tbody>
-                <?php if($_SESSION['userID'] == 1){
-                  $sql = "SELECT * FROM orders LIMIT 10;";
+                <?php if($_SESSION['userID'] == 0){
+                  $sql = "SELECT * FROM orders ORDER BY orderID DESC LIMIT 10 ;";
                 } else{
-                  $sql = "SELECT * FROM orders WHERE $_SESSION[userID] == userID;";
+                  $sql = "SELECT * FROM orders WHERE $_SESSION[userID] = userID ORDER BY orderID DESC;";
                 }
                 $result = mysqli_query($conn, $sql);
-                if (!$result) { ?>
-                  <tr>
-                    <td colspan="4">No current orders</td>
-                  </tr>
-                <?php } else {
+
                 $resultCheck = mysqli_num_rows($result);
                 if ($resultCheck > 0) {
                   while($row = $result->fetch_assoc()) { ?>
@@ -163,7 +121,11 @@
                       <!-- <td></td> -->
                     </tr>
 
-                <?php }}}  ?>
+                  <?php }}else{ ?>
+                  <tr>
+                    <td colspan="4">No current orders</td>
+                  </tr>
+              <?php  }  ?>
 
                 <!-- <tr>
                   <th>#</th>

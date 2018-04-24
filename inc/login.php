@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['loginButton'])) {
+if (isset($_POST['login-submit'])) {
 	require_once '../app/database.php';
 
 	$username = mysqli_real_escape_string($conn, $_POST['emailAddress']);
@@ -10,14 +10,14 @@ if (isset($_POST['loginButton'])) {
 	//Error handlers
 	//Check if inputs are empty
 	if (empty($username) || empty($password)) {
-		header("Location: ../index.php?action=login&error=empty");
+		header("Location: ../register?error=empty");
 		exit();
 	} else {
 		$sql = "SELECT * FROM users WHERE username='$username'";
 		$result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
 		if ($resultCheck < 1) {
-			header("Location: ../index.php?action=login&error=usernamenotfound");
+			header("Location: ../register?error=usernamenotfound");
 			exit();
 		} else {
 			if ($row = mysqli_fetch_assoc($result)) {
@@ -25,7 +25,7 @@ if (isset($_POST['loginButton'])) {
 				// $hashedPwdCheck = password_verify($password, $row['password']);
         $hashedPwdCheck = md5($password);
 				if ($hashedPwdCheck == false) {
-					header("Location: ../index.php?action=login&error=invalidpassword");
+					header("Location: ../register?error=invalidpassword");
 					exit();
 				} elseif ($hashedPwdCheck == true) {
 					//Log in the user here
@@ -43,7 +43,7 @@ if (isset($_POST['loginButton'])) {
 		}
 	}
 } else {
-	header("Location: ../index.php?login=error");
+	header("Location: ../register?error=error");
 	exit();
 }
 

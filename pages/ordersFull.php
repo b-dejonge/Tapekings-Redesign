@@ -25,8 +25,8 @@
 
 <body class="dashboard">
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">TapeKings</a>
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="sports"><img src="./css/img/logo-top.png" alt="Logo" style="height:40px;"/></a>
+      <form action="inc/search.php" method="post" style="max-width: 1485px;width: 100%;"><input class="form-control form-control-dark w-100" type="text" name="search" placeholder="Search" aria-label="Search"></form>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           <a class="nav-link" href="logout">Sign out</a>
@@ -51,8 +51,9 @@
                   Orders <span class="sr-only">(current)</span>
                 </a>
               </li>
+              <?php if ($_SESSION['userID']==0){ ?>
               <li class="nav-item">
-                <a class="nav-link" href="products">
+                <a class="nav-link" href="productsDashboard">
                   <span data-feather="shopping-cart"></span>
                   Products
                 </a>
@@ -63,13 +64,19 @@
                   Customers
                 </a>
               </li>
+              <?php } ?>
             </ul>
-          </div>
         </nav>
 
         <?php
-          $sql = "SELECT * FROM orders, orderproducts WHERE orders.orderID = orderproducts.orderID && orders.orderID = $_SESSION[orderID];";
+          if ($_SESSION['userID'] == 0) {
+            $sql = "SELECT * FROM orders, orderproducts WHERE orders.orderID = orderproducts.orderID && orders.orderID = $_SESSION[orderID];";
+          } else{
+          $sql = "SELECT * FROM orders, orderproducts WHERE orders.orderID = orderproducts.orderID && orders.orderID = $_SESSION[orderID] && orders.userID = $_SESSION[userID];";
+        }// echo $sql;
           $result = mysqli_query ($conn, $sql);
+
+          if(mysqli_num_rows($result) > 0){
 
           while($row = $result->fetch_assoc()) {
             $email = $row['email'];
@@ -91,21 +98,30 @@
             $shippingState = $row['shippingState'];
             $shippingZip = $row['shippingZip'];
 
-            $sql = "SELECT * FROM orderproducts WHERE $_SESSION[orderID] = orderID;";
-            $result = mysqli_query ($conn, $sql);
-            while($row = $result->fetch_assoc()) {
-              $product_id = $row['productID'];
-              $qty = $row['qty'];
-              $price = $row['price'];
-              $name = $row['title'];
-            }
-          } ?>
+            $total = floatval($row['total']);
+            $shipping = floatval($row['shipping']);
+            $tax = floatval($row['tax']);
+
+          //   $sql = "SELECT * FROM orderproducts WHERE $_SESSION[orderID] = orderID;";
+          //   $result = mysqli_query ($conn, $sql);
+          //   while($row = $result->fetch_assoc()) {
+          //     $product_id = $row['productID'];
+          //     $qty = $row['qty'];
+          //     $price = $row['price'];
+          //     $name = $row['title'];
+        }} else{ ?>
+          <?php header("Location: ../404");
+        }
+
+          // } ?>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <h2>Orders</h2>
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h2>Orders</h2>
+          </div>
           <div class="row">
             <div class="col-md-6">
-              <div class="card">
+              <div class="card order-details">
                 <h4 class="card-header">Order Details</h4>
                   <table>
                     <tbody>
@@ -117,13 +133,13 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="card">
+              <div class="card customer-details">
                 <h4 class="card-header">Order Customer Details</h4>
                   <table>
                     <tbody>
                       <tr><td><?php echo $billingFirstName . " " . $billingLastName; ?></td></tr>
                       <tr><td><?php echo $email ?></td></tr>
-                      <tr><td>(542)484-2824</td></tr>
+                      <tr><td>(542) 484-2824</td></tr>
                     </tbody>
                   </table>
               </div>
@@ -155,29 +171,73 @@
                     </tr>
                   </tbody>
                 </table>
-                <table>
+                <table class="table table-bordered">
                   <thead>
                     <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Total</th>
+                    <th class="text-right">Quantity</th>
+                    <th class="text-right">Price</th>
+                    <th class="text-right">Total</th>
                   </thead>
                   <tbody>
+                    <?php
+                    $sql = "SELECT * FROM orderproducts WHERE $_SESSION[orderID] = orderID;";
+                    $result = mysqli_query ($conn, $sql);
+                    foreach ($result as $items) {
+                      $product_id = $items['productID'];
+                      $qty = $items['qty'];
+                      $price = $items['price'];
+                      $name = $items['title'];
+                      if ($product_id>100) {
+                        $grip_type = $items['grip_type'];
+                        $design_type = $items['design_type'];
+                        $color1 = $items['color1'];
+                        $color2 = $items['color2'];
+                        $color3 = $items['color3'];
+                      } else {
+                        $sql = "SELECT slug FROM products WHERE $product_id = id;";
+                        $result = mysqli_query ($conn, $sql);
+                        while($items = $result->fetch_assoc()) {
+                          $slug = $items['slug'];
+                        }
+                      }
+                    ?>
                     <tr>
                       <td>
-                        <?php echo $name;
+                        <?php
                         if ($name == "Send Us Your Bat"){?>
-                          <small><?php echo $grip_type; ?></small>
-                          <small><?php echo $design_type; ?></small>
-                          <small><?php echo $color1; ?></small>
-                          <small><?php echo $color2; ?></small>
-                          <small><?php echo $color3; ?></small>
+                          <a href="store/send-us-your-bat/<?php echo strtolower($grip_type); ?>"><?php echo $name ?></a>
+                          <div class="order-bat-info">
+                            <p><small><?php echo "- Grip Type:" . " " . $grip_type; ?></small></p>
+                            <p><small><?php echo "- Design:" . " " . $design_type; ?></small></p>
+                            <p><small><?php echo "- Color 1:" . " " . $color1; ?></small></p>
+                            <p><small><?php echo "- Color 2:" . " " . $color2; ?></small></p>
+                            <p><small><?php echo "- Color 3:" . " " . $color3; ?></small></p>
+                          </div>
+                        <?php } else { ?>
+                          <a href="store/tape/<?php echo $slug; ?>"><?php echo $name ?></a>
                         <?php } ?>
                       </td>
-                      <td><?php echo $qty; ?></td>
-                      <td><?php echo $price; ?></td>
-                      <td><?php $subtotal = $price * $qty;
-                      echo number_format((float)$subtotal, 2, '.', '') ?></td>
+                      <td class="text-right"><?php echo $qty; ?></td>
+                      <td class="text-right"><?php echo number_format((float)$price, 2, '.', ''); ?></td>
+                      <td class="text-right"><?php $subtotal_item = $price * $qty;
+                      echo number_format((float)$subtotal_item, 2, '.', ''); ?></td>
+                    </tr>
+                    <?php } ?>
+                    <tr>
+                      <td colspan="3" class="text-right">Subtotal</td>
+                      <td class="text-right"><?php $subtotal = $total-$shipping-$tax; echo number_format((float)$subtotal, 2, '.', ''); ?></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="text-right">Tax</td>
+                      <td class="text-right"><?php echo number_format((float)$tax, 2, '.', ''); ?></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="text-right">Shipping</td>
+                      <td class="text-right"><?php echo number_format((float)$shipping, 2, '.', ''); ?></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="text-right">Total</td>
+                      <td class="text-right"><?php echo number_format((float)$total, 2, '.', ''); ?></td>
                     </tr>
                   </tbody>
                 </table>

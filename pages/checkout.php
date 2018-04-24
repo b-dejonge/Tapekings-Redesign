@@ -98,7 +98,14 @@
                 </div>
                 <div class="summaryRow shipping">
                   <h5>Shipping</h5>
-                  <h5 class="shipping-total">$<?php $shipping = 8;
+                  <h5 class="shipping-total">$<?php if (isset($cartitems['grip-type'])){
+                    if($cartitems['grip-type'] == "Hydro" || $cartitems['grip-type'] == "Custom"){
+                    $shipping = 0;
+                  } else {
+                    $shipping = 5;
+                  }} else{
+                    $shipping = 5;
+                  }
                   echo number_format((float)$shipping, 2, '.', ''); ?></h5>
                   <input type="hidden" name="shipping" value="<?php echo $shipping; ?>">
                 </div>
@@ -166,7 +173,7 @@
                 <label for="city">City</label>
                 <input type="text" class="form-control" name="billingCity" placeholder="" required>
                 <div class="invalid-feedback">
-                  Please select a valid country.
+                  Please select a valid city.
                 </div>
               </div>
               <div class="col-md-4 mb-3">
@@ -362,14 +369,14 @@
                 <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
                 <label class="custom-control-label" for="credit">Credit card</label>
               </div>
-              <div class="custom-control custom-radio">
+              <!-- <div class="custom-control custom-radio">
                 <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
                 <label class="custom-control-label" for="debit">Debit card</label>
               </div>
               <div class="custom-control custom-radio">
                 <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
                 <label class="custom-control-label" for="paypal">Paypal</label>
-              </div>
+              </div> -->
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
@@ -382,7 +389,7 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="cc-number">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                <input type="text" class="form-control" id="cc-number" max="16" placeholder="" required>
                 <div class="invalid-feedback">
                   Credit card number is required
                 </div>
@@ -391,14 +398,14 @@
             <div class="row">
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                <input type="text" class="form-control" id="cc-expiration" max="5" placeholder="" required>
                 <div class="invalid-feedback">
                   Expiration date required
                 </div>
               </div>
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                <input type="text" class="form-control" id="cc-cvv" max="3" placeholder="" required>
                 <div class="invalid-feedback">
                   Security code required
                 </div>

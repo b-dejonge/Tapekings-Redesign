@@ -73,7 +73,7 @@
                   </div>
                   <div class="login-button">
                     <input type="hidden" name="url" value="<?php echo $_SESSION['url'] ?>">
-                    <button type="submit" name="loginButton">LOG IN</button>
+                    <button type="submit" name="login-submit">LOG IN</button>
                   </div>
                 </div>
               </form>
