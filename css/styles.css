@@ -28,11 +28,9 @@ body.landing{
 }
 
 .tk-landing h1{
-  font-size: 70px;
-  line-height: 60px;
-  font-family: copperplate, 'Copperplate Gothic';
+  font-size: 60px;
+  font-family: 'Copperplate Gothic';
   padding-bottom: 30px;
-  font-weight: 500;
 }
 
 .tk-landing p{
