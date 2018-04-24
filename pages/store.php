@@ -118,7 +118,7 @@
         <div class="row">
           <div class="col-lg-6 text-center prices-headline">
             <h2 class="heading">Tape Your Own Grip</h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis  dis parturient montes, nascetur ridiculus </p><br>
+            <p>Want to tape your own bat? We've got you covered with great tape from Howies Hockey which is the same tape our professinals use to tape bats. Think you have a great design, feel free to send us a picture!</p><br>
           </div>
         </div>
         <div class="row">
